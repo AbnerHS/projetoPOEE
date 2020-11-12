@@ -2,6 +2,8 @@ package projeto;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import com.projeto.model.models.Usuario;
@@ -11,10 +13,10 @@ public class UsuarioTest {
 	//@Test(expected = Exception.class)
 	public void salvarUsuarioBancoDadosTeste() {
 		Usuario usuario = new Usuario();
-		usuario.setUsername("Abner");
-		usuario.setPassword("12345");
-		usuario.setEmail("abner.henrique22@gmail.com");
-		usuario.setAtivo(false);
+		usuario.setUsername("Beatriz <3");
+		usuario.setPassword("miudinha");
+		usuario.setEmail("cristina.b@gmail.com");
+		usuario.setAtivo(true);
 		usuario.setAdmin(false);
 		
 		UsuarioService usuarioService = new UsuarioService();
@@ -22,7 +24,7 @@ public class UsuarioTest {
 		System.out.println("Salvando");
 	}
 
-	@Test(expected = Exception.class)
+	//@Test(expected = Exception.class)
 	public void alterarUsuarioBancoDadosTeste() {
 		Usuario usuario = new Usuario();
 		usuario.setId(1);
@@ -33,5 +35,23 @@ public class UsuarioTest {
 		
 		usuarioService.update(usuario);
 		System.out.println("Alterando");
+	}
+	
+	@Test(expected = Exception.class)
+	public void listarTodosUsuarioTabelaUsuario() {
+		UsuarioService usuarioService = new UsuarioService();
+		List<Usuario> listaUsuario = usuarioService.findAll();
+		for(Usuario usuario : listaUsuario) {
+			System.out.println(usuario.toString());
+		}
+	}
+	
+	//@Test
+	public void excluirUsuarioDaTabela() {
+		Usuario usuario = new Usuario();
+		usuario.setId(2);
+		UsuarioService usuarioService = new UsuarioService();
+		usuarioService.delete(usuario);
+			
 	}
 }
