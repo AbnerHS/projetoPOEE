@@ -1,7 +1,5 @@
 package projeto;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -24,11 +22,11 @@ public class UsuarioTest {
 		System.out.println("Salvando");
 	}
 
-	//@Test(expected = Exception.class)
+	@Test(expected = Exception.class)
 	public void alterarUsuarioBancoDadosTeste() {
 		Usuario usuario = new Usuario();
-		usuario.setId(1);
-		usuario.setEmail("abnerh@gmail.com");
+		usuario.setId(2);
+		usuario.setEmail("meuamor@gmail.com");
 		
 		UsuarioService usuarioService = new UsuarioService();
 		usuario = usuarioService.findById(usuario.getId());
@@ -37,7 +35,7 @@ public class UsuarioTest {
 		System.out.println("Alterando");
 	}
 	
-	@Test(expected = Exception.class)
+	//@Test(expected = Exception.class)
 	public void listarTodosUsuarioTabelaUsuario() {
 		UsuarioService usuarioService = new UsuarioService();
 		List<Usuario> listaUsuario = usuarioService.findAll();
@@ -46,11 +44,12 @@ public class UsuarioTest {
 		}
 	}
 	
-	//@Test
+	//@Test(expected = Exception.class)
 	public void excluirUsuarioDaTabela() {
 		Usuario usuario = new Usuario();
 		usuario.setId(2);
 		UsuarioService usuarioService = new UsuarioService();
+		usuario = usuarioService.findById(usuario.getId());
 		usuarioService.delete(usuario);
 			
 	}

@@ -9,6 +9,7 @@ public class VariaveisProjeto {
 	public static final Integer ERRO_EXCLUSAO = 30;
 	public static final Integer DIGITACAO_OK = 100;
 	public static final Integer CAMPO_VAZIO = 200;
+	public static final String LIMPA_CAMPO = "";
 	
 	public static boolean digitacaoCampo(String texto) {
 		if(Objects.isNull(texto)) {
@@ -19,4 +20,9 @@ public class VariaveisProjeto {
 		}
 		return false;
 	}
+	
+	public static Integer convertToInteger(String text) {
+		return Integer.parseInt(text);
+	}
+	
 }
