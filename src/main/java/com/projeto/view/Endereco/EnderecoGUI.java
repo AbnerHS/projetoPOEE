@@ -1,4 +1,4 @@
-package com.projeto.view;
+package com.projeto.view.Endereco;
 
 import java.awt.EventQueue;
 

@@ -1,10 +1,17 @@
 package com.projeto.model.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +36,30 @@ public class Usuario {
 	
 	@Column(nullable = false)
 	private boolean admin = false;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "departamentoId", nullable = false)
+	private Departamento departamento;
+	
+	@ManyToMany()
+	@JoinTable(name = "usuarioRole", 
+		joinColumns = @JoinColumn(name = "idUsuario"),
+		inverseJoinColumns = @JoinColumn(name = "idRole"))
+	private List<Role> roles;
+	
+	public Usuario() {}
+	
+	public Usuario(Integer id, String username, String email, String password, boolean ativo, boolean admin,
+			Departamento departamento) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.ativo = ativo;
+		this.admin = admin;
+		this.departamento = departamento;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -65,6 +96,18 @@ public class Usuario {
 	}
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+	public List<Role> getRole() {
+		return roles;
+	}
+	public void setRole(List<Role> roles) {
+		this.roles = roles;
 	}
 	@Override
 	public int hashCode() {

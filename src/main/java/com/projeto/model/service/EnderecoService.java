@@ -37,7 +37,7 @@ public class EnderecoService extends ConexaoBancoService{
 				this.close();
 			}
 		} else {
-			toReturn = VariaveisProjeto.CAMPO_VAZIO;
+			toReturn = VariaveisProjeto.NOME_CAMPO_VAZIO;
 		}
 		return toReturn;
 	}
@@ -60,7 +60,7 @@ public class EnderecoService extends ConexaoBancoService{
 				this.close();
 			}
 		} else {
-			toReturn = VariaveisProjeto.CAMPO_VAZIO;
+			toReturn = VariaveisProjeto.NOME_CAMPO_VAZIO;
 		}
 		return toReturn;
 	}
@@ -94,11 +94,11 @@ public class EnderecoService extends ConexaoBancoService{
 	
 	public Integer validarDigitacao(Endereco endereco) {
 		if(VariaveisProjeto.digitacaoCampo(endereco.getRua())) {
-			return VariaveisProjeto.CAMPO_VAZIO;
+			return VariaveisProjeto.NOME_CAMPO_VAZIO;
 		} else if(VariaveisProjeto.digitacaoCampo(endereco.getBairro())) {
-			return VariaveisProjeto.CAMPO_VAZIO;
+			return VariaveisProjeto.NOME_CAMPO_VAZIO;
 		} else if(VariaveisProjeto.digitacaoCampo(endereco.getNumero().toString())) {
-			return VariaveisProjeto.CAMPO_VAZIO;
+			return VariaveisProjeto.NOME_CAMPO_VAZIO;
 		}
 		return VariaveisProjeto.DIGITACAO_OK;
 	}
